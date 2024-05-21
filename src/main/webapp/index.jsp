@@ -17,6 +17,7 @@
                 <th>Fuerza</th>
                 <th>Experiencia</th>
                 <th>Foto</th>
+                <th>escudo</th>
                 <th>arma</th>
         </tr>
         <c:forEach items="${caballeros}" var="caballero">
@@ -25,6 +26,9 @@
                 <td>${caballero.nombre}</td>
                 <td>${caballero.fuerza}</td>
                 <td>${caballero.experiencia}</td>
+                <td>${caballero.foto}</td>
+                <td>${caballero.escudo.nombre}</td>
+                <td>${caballero.arma.nombre}</td>
             </tr>
         </c:forEach>
         </table>

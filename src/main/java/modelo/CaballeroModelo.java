@@ -22,8 +22,17 @@ public class CaballeroModelo {
             	caballero.setNombre(rs.getString("nombre"));
             	caballero.setFuerza(rs.getInt("fuerza"));
             	caballero.setExperiencia(rs.getInt("experiencia"));
+            	caballero.setFoto(rs.getString("foto"));
             	
+            	EscudoModelo em = new EscudoModelo();
+            	em.setConector(conector);
+            	Escudo escudo = em.getUnEscudo(rs.getInt("escudo_id"));
+            	caballero.setEscudo(escudo);
             	
+            	ArmaModelo am = new ArmaModelo(); 
+            	am.setConector(conector);
+            	Arma arma = am.getUnArma(rs.getInt("arma_id"));
+            	caballero.setArma(arma);
             	
             	caballeros.add(caballero);
             }
