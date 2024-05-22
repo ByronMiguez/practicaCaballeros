@@ -6,9 +6,9 @@ import java.sql.Statement;
 
 public class ArmaModelo {
 
-	private static Conector conector;
+	private Conector conector;
 	
-	public static Arma getUnArma(int id) {
+	public Arma getUnArma(int id) {
 		Arma arma = new Arma();
 		String query = "SELECT * FROM ARMAS WHERE id = ?";
 		try {
@@ -32,12 +32,12 @@ public class ArmaModelo {
 		return arma;
 	}
 
-	public static Conector getConector() {
+	public Conector getConector() {
 		return conector;
 	}
 
-	public static void setConector(Conector conector) {
-		ArmaModelo.conector = conector;
+	public void setConector(Conector conector) {
+		this.conector = conector;
 	}
 	
 }

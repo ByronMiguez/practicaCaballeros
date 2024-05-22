@@ -6,9 +6,9 @@ import java.sql.Statement;
 
 public class EscudoModelo {
 	
-	private static Conector conector;
+	private Conector conector;
 	
-	public static Escudo getUnEscudo(int id) {
+	public Escudo getUnEscudo(int id) {
 		
 		Escudo escudo = new Escudo();
 		String query = "SELECT * FROM ESCUDOS WHERE id = ?";

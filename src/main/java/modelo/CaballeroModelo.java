@@ -51,4 +51,23 @@ public class CaballeroModelo {
 	}
 
 
+	public void insert (Caballero caballero) {
+		
+		String sql = "INSERT INTO caballeros(nombre, fuerza, experiencia, foto, arma_id, escudo_id) VALUES(?,?,?,?,?,?)";
+		try {
+		PreparedStatement pst = conector.getCn().prepareStatement(sql);
+		pst.setString(1, caballero.getNombre());
+		pst.setInt(2, caballero.getFuerza());
+		pst.setInt(3, caballero.getExperiencia());
+		pst.setString(4, caballero.getFoto());
+		pst.setInt(5, caballero.getArma().getId());
+		pst.setInt(6, caballero.getEscudo().getId());
+		
+		pst.execute();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
 }

@@ -11,6 +11,7 @@
 <body>
 
         <table>
+        <a href="CreateCaballero">Crear</a>
         <tr>
                 <th>ID</th>
                 <th>Nombre</th>
