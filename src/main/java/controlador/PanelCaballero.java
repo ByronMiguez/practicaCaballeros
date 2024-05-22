@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modelo.Arma;
+import modelo.ArmaModelo;
 import modelo.Caballero;
 import modelo.CaballeroModelo;
 import modelo.Conector;
@@ -35,7 +37,9 @@ public class PanelCaballero extends HttpServlet {
 		
 		CaballeroModelo cm = new CaballeroModelo();
 		cm.setConector(new Conector());
+		
 		ArrayList<Caballero> caballeros = cm.getTodos();
+	
 		request.setAttribute("caballeros",caballeros);
 		
 		request.getRequestDispatcher("index.jsp").forward(request, response);
