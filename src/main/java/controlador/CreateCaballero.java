@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.connector.Response;
+
 import modelo.ArmaModelo;
 import modelo.Caballero;
 import modelo.CaballeroModelo;
@@ -67,12 +69,13 @@ public class CreateCaballero extends HttpServlet {
 	
 		CaballeroModelo cm = new CaballeroModelo();
 		cm.setConector(new Conector());
-		if(cm.validador(caballero)) {
+		Boolean resultado = false;
+		if(resultado = cm.validador(caballero))  {
 			cm.insert(caballero);
-			request.getRequestDispatcher("PanelCaballero?msg=ok").forward(request, response);
+			response.sendRedirect("PanelCaballero?msg=ok");
 			
 		}else {
-			request.getRequestDispatcher("PanelCaballero?msg=no").forward(request, response);
+			response.sendRedirect("PanelCaballero?msg=no");
 		}
 		
 	}

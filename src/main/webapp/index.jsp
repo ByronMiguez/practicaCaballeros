@@ -11,8 +11,28 @@
 <body>
 
 <div class="container mt-4">
+
+	<c:if test="${msg == 'no'}">
+        <div class="alert alert-danger alert-dismissible fade show mx-4" role="alert">
+            No se puede insertar el caballero
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </c:if>
+    <c:if test="${msg == 'ok'}">
+        <div class="alert alert-success alert-dismissible fade show mx-4" role="alert">
+            Caballero insertado
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </c:if>
+          
     <a href="CreateCaballero" class="btn btn-primary mb-3">Crear</a>
-    
+  
+    <button type="button" class="btn btn-secondary mb-3" data-toggle="modal" data-target="#searchModal">Buscar</button>
+
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -39,6 +59,29 @@
             </c:forEach>
         </tbody>
     </table>
+</div>
+
+
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="searchModalLabel">Buscar Caballero</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="PanelCaballero" method="get">
+                    <div class="form-group">
+                        <label for="searchQuery">Nombre del Caballero</label>
+                        <input type="text" class="form-control" id="searchQuery" name="searchQuery" placeholder="Introduce el nombre">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

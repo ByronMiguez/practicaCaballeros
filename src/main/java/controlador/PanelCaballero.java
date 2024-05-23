@@ -42,7 +42,9 @@ public class PanelCaballero extends HttpServlet {
 	
 		request.setAttribute("caballeros",caballeros);
 		
+		request.setAttribute("msg", request.getParameter("msg"));
 		request.getRequestDispatcher("index.jsp").forward(request, response);
+		
 	}
 
 	/**
