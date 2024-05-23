@@ -70,4 +70,53 @@ public class CaballeroModelo {
 		}
 	}
 	
+	public static boolean validador (Caballero caballero) {
+		boolean resultado= false;
+		CaballeroModelo cm = new CaballeroModelo();
+		
+		if(caballero.getNombre().isBlank()||caballero.getArma()==null||caballero.getEscudo()==null) {
+			resultado= false;
+			return resultado;
+		}else {
+			resultado= true;
+		}
+		
+		if(!(0<caballero.getFuerza()&&caballero.getFuerza()<100)) {
+			resultado= false;
+			return resultado;
+		}else {
+			resultado= true;
+		}
+		 if (cm.nombreRepe(caballero.getNombre())) {
+	            resultado = false;
+	        }
+		 else {
+			 resultado = true;
+		 }
+		
+		
+		return resultado;
+	}
+	
+	public boolean nombreRepe(String nombre) {
+        boolean repetido = false;
+        String sql = "SELECT nombre FROM caballeros WHERE nombre = ?";
+
+        try (PreparedStatement pst = conector.getCn().prepareStatement(sql)) {
+            pst.setString(1, nombre);
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    repetido = true;
+                }
+                else {
+					repetido = false;
+				}
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return repetido;
+    }
+	
 }

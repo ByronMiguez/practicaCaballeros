@@ -67,8 +67,13 @@ public class CreateCaballero extends HttpServlet {
 	
 		CaballeroModelo cm = new CaballeroModelo();
 		cm.setConector(new Conector());
-		cm.insert(caballero);
-		request.getRequestDispatcher("PanelCaballero").forward(request, response);
+		if(cm.validador(caballero)) {
+			cm.insert(caballero);
+			request.getRequestDispatcher("PanelCaballero?msg=ok").forward(request, response);
+			
+		}else {
+			request.getRequestDispatcher("PanelCaballero?msg=no").forward(request, response);
+		}
 		
 	}
 
