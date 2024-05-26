@@ -2,6 +2,7 @@ package controlador;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -51,8 +52,25 @@ public class PanelCaballero extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		String busqueda = request.getParameter("busqueda").toLowerCase();
+		
+		CaballeroModelo cm = new CaballeroModelo();
+		cm.setConector(new Conector());
+		ArrayList<Caballero> caballeros = cm.getTodos();
+		
+		Iterator<Caballero> it = caballeros.iterator();
+		
+		while (it.hasNext()) {
+			if (!it.next().getNombre().toLowerCase().contains(busqueda)){
+				it.remove();
+			}
+			
+		}
+		
+		request.setAttribute("caballeros", caballeros);
+		
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 }

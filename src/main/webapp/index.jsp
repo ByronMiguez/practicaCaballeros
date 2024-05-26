@@ -72,10 +72,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="PanelCaballero" method="get">
+                <form action="PanelCaballero" method="post">
                     <div class="form-group">
-                        <label for="searchQuery">Nombre del Caballero</label>
-                        <input type="text" class="form-control" id="searchQuery" name="searchQuery" placeholder="Introduce el nombre">
+                        <label for="busqueda">Nombre del Caballero</label>
+                        <input type="text" class="form-control" id="busqueda" name="busqueda" placeholder="Introduce el nombre">
                     </div>
                     <button type="submit" class="btn btn-primary">Buscar</button>
                 </form>
